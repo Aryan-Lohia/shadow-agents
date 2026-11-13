@@ -247,11 +247,9 @@ body.nav-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .pain-card{padding:22px 20px;background:var(--paper)}
 .pain-card .num{font-family:var(--font-mono);font-weight:700;font-size:12px;color:var(--red);letter-spacing:.1em;margin-bottom:8px}
-.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.bento .system-card:nth-child(1),.bento .system-card:nth-child(6),
-.bento .system-card:nth-child(7),.bento .system-card:nth-child(8){grid-column:span 2}
-.system-card{padding:22px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--paper)}
-.system-card img{width:58px;height:50px;object-fit:contain}
+.bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+.system-card{padding:22px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;background:var(--paper);height:100%;min-width:0}
+.system-card img{width:58px;height:50px;object-fit:contain;flex-shrink:0}
 .system-card p{margin:8px 0 0;color:var(--muted);font-size:15.5px}
 .compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:var(--line);box-shadow:var(--shadow);overflow:hidden}
 .compare th,.compare td{padding:14px 16px;text-align:left;border-bottom:3px solid var(--ink);border-right:3px solid var(--ink);font-size:15px;vertical-align:top}
@@ -277,6 +275,12 @@ blockquote.quote{margin:0;padding:28px 24px;background:var(--paper)}
 blockquote.quote p{margin:0;font-size:22px;line-height:1.25;letter-spacing:-.03em;font-weight:700}
 blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .qmark{font-family:var(--font-serif);font-style:italic;font-size:56px;line-height:.7;color:var(--blue);margin-bottom:8px}
+.portfolio-quotes{margin-top:36px}
+.portfolio-quotes .sticker{display:inline-block;margin-bottom:16px}
+.portfolio-quotes blockquote.quote p{
+  font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(20px,2vw,24px);line-height:1.3;color:var(--ink);
+}
 
 .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px}
 .faq-list details{background:var(--paper);border:var(--line);box-shadow:var(--shadow-sm);padding:0 20px}
@@ -325,20 +329,40 @@ blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:1
 .mobile-cta .btn{flex:1;min-height:48px;font-size:14px}
 
 /* Podcast */
-.hero-pod{position:relative;padding:0;min-height:82vh;display:flex;align-items:flex-end;border-bottom:var(--line);background:#0b0b0b;overflow:hidden}
+.hero-pod{position:relative;padding:0;min-height:82vh;display:flex;align-items:flex-end;border-bottom:var(--line);background:#0b0b0b;overflow:hidden;box-shadow:inset 0 0 0 4px var(--ink)}
 .hero-pod .hero-bg{position:absolute;inset:0}
 .hero-pod .hero-bg img,.hero-pod .hero-bg .ph{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;border:0;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 50%;border:0;
 }
-.hero-pod .hero-bg::after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+.hero-pod .hero-bg-video{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
+}
+.hero-pod .hero-bg-video iframe{
+  position:absolute;top:50%;left:50%;
+  width:177.78vh;height:100vh;min-width:100%;min-height:56.25vw;
+  transform:translate(-50%,-50%) scale(1.12);
+  border:0;pointer-events:none;max-width:none;
+}
+.hero-pod .hero-bg-fx{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
   background:
-    linear-gradient(180deg,rgba(11,11,11,.62) 0%,rgba(11,11,11,.74) 38%,rgba(11,11,11,.94) 100%),
-    linear-gradient(90deg,rgba(11,11,11,.35) 0%,rgba(11,11,11,.12) 55%,rgba(11,11,11,.3) 100%);
+    linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,.70) 52%,rgba(11,11,11,.85) 100%),
+    linear-gradient(90deg,rgba(11,11,11,.62) 0%,rgba(11,11,11,.28) 42%,rgba(11,11,11,.12) 100%);
+}
+.hero-pod .hero-bg-fx::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:180px 180px;
 }
 .hero-pod .wrap{position:relative;z-index:2;padding:130px 0 64px;max-width:900px}
+.hero-pod .wrap::before{
+  content:"";position:absolute;left:-8%;bottom:-6%;width:min(740px,95%);height:min(560px,85%);
+  background:radial-gradient(ellipse at 28% 55%,rgba(214,255,60,.22) 0%,rgba(214,255,60,.08) 42%,transparent 70%);
+  pointer-events:none;z-index:0;filter:blur(2px);
+}
+.hero-pod .wrap > *{position:relative;z-index:1}
 .hero-pod h1,.hero-pod .lede{color:#fff}
 .hero-pod .lede{color:#efe9d8}
+.hero-pod h1{line-height:1.2}
 .hero-pod h1 .mark{color:var(--ink)}
 .episode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .episode-card{background:var(--paper);overflow:hidden}
@@ -419,11 +443,11 @@ blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:1
   .marquee-track{animation:none}
   .reveal{opacity:1;transform:none}
   .btn,.play-btn i{transition:none}
+  .hero-bg-video{display:none !important}
 }
 @media (max-width:1100px){
   .hero-grid,.split,.contact-grid,.trust-grid,.frames{grid-template-columns:1fr}
-  .bento{grid-template-columns:1fr 1fr}
-  .bento .system-card:nth-child(1),.bento .system-card:nth-child(6){grid-column:auto}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps,.episode-grid,.benefit-grid,.topic-grid,.pain-grid,.swatch-grid,.portfolio-grid{grid-template-columns:1fr 1fr}
   .frames{justify-items:center}
 }
@@ -437,7 +461,7 @@ blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:1
   body.nav-open .nav{display:flex}
   .nav a{padding:12px 8px}
   .nav-cta{margin:10px 0 0}
-  .system-card,.quote-grid,.do-dont,.logo-row,.compare{display:block}
+  .quote-grid,.do-dont,.logo-row,.compare{display:block}
   .compare thead{display:none}
   .compare tr{display:block;border-bottom:var(--line-sm);padding:8px 0}
   .compare td,.compare th{display:block;border:0;padding:6px 14px}
@@ -455,18 +479,19 @@ blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:1
   .badge-row{margin-top:14px}
   .hero-pod{min-height:0}
   .hero-pod .wrap{padding:32px 0 calc(24px + var(--cta-h))}
-  .hero-pod .hero-bg::after{
-    background:linear-gradient(180deg,rgba(11,11,11,.78) 0%,rgba(11,11,11,.88) 42%,rgba(11,11,11,.96) 100%);
+  .hero-pod .hero-bg-fx{
+    background:
+      linear-gradient(180deg,rgba(11,11,11,.58) 0%,rgba(11,11,11,.72) 48%,rgba(11,11,11,.88) 100%),
+      linear-gradient(90deg,rgba(11,11,11,.70) 0%,rgba(11,11,11,.32) 55%,rgba(11,11,11,.16) 100%);
   }
 }
 @media (max-width:640px){
-  .pain-grid,.portfolio-grid,.steps,.episode-grid,.benefit-grid,.topic-grid,.swatch-grid,.bento{grid-template-columns:1fr}
+  .pain-grid,.portfolio-grid,.steps,.episode-grid,.benefit-grid,.topic-grid,.swatch-grid,.bento{grid-template-columns:minmax(0,1fr)}
   .btn-row{flex-direction:column}
   .hero .btn-row .btn,.hero-pod .btn-row .btn,#final-cta .btn{width:100%}
   .trust-grid{grid-template-columns:1fr 1fr}
   h1{font-size:clamp(36px,12vw,52px)}
 }
-
 </style>
 <script>
 window.saPh=function(img){
@@ -567,28 +592,54 @@ document.addEventListener("DOMContentLoaded",function(){
     </div>
   </section>
 
-  <section class="section" id="stories-peek">
+  <section class="section band-ink" id="portfolio">
+    <span id="stories-peek"></span>
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="kicker">Proof, up front</p>
-        <h2>Agencies already <span class="accent mark">running on this.</span></h2>
+        <p class="kicker lime">The work</p>
+        <h2 style="color:#fff">Sample edits.<br><span class="accent mark">No mood-board fluff.</span></h2>
+        <p class="lede">Recent short-form work. Watch here, or open the full folder.</p>
       </div>
-      <div class="quote-grid">
-        <blockquote class="quote card reveal">
-          <div class="qmark" aria-hidden="true">“</div>
-          <p>Shadow Agents transformed our agency’s profitability with consistent quality and timely deliveries. We’ve reduced revisions by 90%.</p>
-          <footer>— Agency Owner, Canada</footer>
-        </blockquote>
-        <blockquote class="quote card reveal">
-          <div class="qmark" aria-hidden="true">“</div>
-          <p>From 5 to 22 clients in 6 months—Shadow Agents scaled our backend with zero hiring. They’re the team behind our growth.</p>
-          <footer>— Media Agency Owner, US</footer>
-        </blockquote>
+      <div class="portfolio-grid">
+        <div class="short-card frame reveal">
+          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-1.jpg" alt="Portfolio sample 1 — Siliguri short-form edit">
+          <button class="play-btn" type="button" data-yt="BBkwayx13u0" data-title="Portfolio sample 1 — Siliguri short-form edit"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 1 — Siliguri short-form edit</span></button>
+        </div>
+        <div class="short-card frame reveal">
+          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-2.jpg" alt="Portfolio sample 2">
+          <button class="play-btn" type="button" data-yt="VU55TiGA5BM" data-title="Portfolio sample 2"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 2</span></button>
+        </div>
+        <div class="short-card frame reveal">
+          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-3.jpg" alt="Portfolio sample 3">
+          <button class="play-btn" type="button" data-yt="Uhq5g2gYBpo" data-title="Portfolio sample 3"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 3</span></button>
+        </div>
+        <div class="short-card frame reveal">
+          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-4.jpg" alt="Portfolio sample 4">
+          <button class="play-btn" type="button" data-yt="d_9308Yxiaw" data-title="Portfolio sample 4"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 4</span></button>
+        </div>
+      </div>
+      <div class="portfolio-quotes reveal">
+        <span class="sticker lime rot">Agencies already running on this</span>
+        <div class="quote-grid">
+          <blockquote class="quote card">
+            <div class="qmark" aria-hidden="true">“</div>
+            <p>Shadow Agents transformed our agency’s profitability with consistent quality and timely deliveries. We’ve reduced revisions by 90%.</p>
+            <footer>— Agency Owner, Canada</footer>
+          </blockquote>
+          <blockquote class="quote card">
+            <div class="qmark" aria-hidden="true">“</div>
+            <p>From 5 to 22 clients in 6 months—Shadow Agents scaled our backend with zero hiring. They’re the team behind our growth.</p>
+            <footer>— Media Agency Owner, US</footer>
+          </blockquote>
+        </div>
+      </div>
+      <div style="margin-top:28px" class="reveal">
+        <a class="btn btn-lime" href="https://drive.google.com/drive/folders/1zh6d33L2jhCr43pyXz2b8Bds6QGxI4gR" target="_blank" rel="noopener">See more work</a>
       </div>
     </div>
   </section>
 
-  <section class="section band-paper" id="problem">
+    <section class="section band-paper" id="problem">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="kicker red">The bottleneck</p>
@@ -741,38 +792,22 @@ document.addEventListener("DOMContentLoaded",function(){
     </div>
   </section>
 
-  <section class="section band-ink" id="portfolio">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="kicker lime">The work</p>
-        <h2 style="color:#fff">Sample edits.<br><span class="accent mark">No mood-board fluff.</span></h2>
-        <p class="lede">Recent short-form work. Watch here, or open the full folder.</p>
+      <section class="section band-paper" id="who">
+    <div class="wrap split">
+      <div class="card panel reveal" style="background:var(--lime)">
+        <p class="kicker ink">Built for</p>
+        <h3>Who this is for</h3>
+        <p>Agencies that want white-label editing support with full bandwidth and dedicated resources. Ideal for growth-stage agencies and B2B production consultants that need consistent monthly delivery.</p>
       </div>
-      <div class="portfolio-grid">
-        <div class="short-card frame reveal">
-          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-1.jpg" alt="Portfolio sample 1 — Siliguri short-form edit">
-          <button class="play-btn" type="button" data-yt="BBkwayx13u0" data-title="Portfolio sample 1 — Siliguri short-form edit"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 1 — Siliguri short-form edit</span></button>
-        </div>
-        <div class="short-card frame reveal">
-          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-2.jpg" alt="Portfolio sample 2">
-          <button class="play-btn" type="button" data-yt="VU55TiGA5BM" data-title="Portfolio sample 2"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 2</span></button>
-        </div>
-        <div class="short-card frame reveal">
-          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-3.jpg" alt="Portfolio sample 3">
-          <button class="play-btn" type="button" data-yt="Uhq5g2gYBpo" data-title="Portfolio sample 3"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 3</span></button>
-        </div>
-        <div class="short-card frame reveal">
-          <img data-ph="SHORT 9:16" data-ratio="9/16" onerror="window.saPh&&saPh(this)" src="assets/short-4.jpg" alt="Portfolio sample 4">
-          <button class="play-btn" type="button" data-yt="d_9308Yxiaw" data-title="Portfolio sample 4"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Play Portfolio sample 4</span></button>
-        </div>
-      </div>
-      <div style="margin-top:28px" class="reveal">
-        <a class="btn btn-lime" href="https://drive.google.com/drive/folders/1zh6d33L2jhCr43pyXz2b8Bds6QGxI4gR" target="_blank" rel="noopener">See more work</a>
+      <div class="card panel reveal">
+        <p class="kicker red">Not for</p>
+        <h3>Who this is not for</h3>
+        <p>Shadow Agents is not for brands looking for one-time edits or individual creators with infrequent volume. We work exclusively with agencies that require consistent monthly delivery.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="stories">
+<section class="section" id="stories">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="kicker">More proof</p>
@@ -789,21 +824,6 @@ document.addEventListener("DOMContentLoaded",function(){
           <p>Their quick turnaround times made it effortless to handle client demands. Our content calendar actually runs ahead of schedule.</p>
           <footer>— CEO, Australia</footer>
         </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <section class="section band-paper" id="who">
-    <div class="wrap split">
-      <div class="card panel reveal" style="background:var(--lime)">
-        <p class="kicker ink">Built for</p>
-        <h3>Who this is for</h3>
-        <p>Agencies that want white-label editing support with full bandwidth and dedicated resources. Ideal for growth-stage agencies and B2B production consultants that need consistent monthly delivery.</p>
-      </div>
-      <div class="card panel reveal">
-        <p class="kicker red">Not for</p>
-        <h3>Who this is not for</h3>
-        <p>Shadow Agents is not for brands looking for one-time edits or individual creators with infrequent volume. We work exclusively with agencies that require consistent monthly delivery.</p>
       </div>
     </div>
   </section>
@@ -909,7 +929,6 @@ document.addEventListener("DOMContentLoaded",function(){
   </div>
 </footer>
 <a class="wa-fab" href="https://wa.me/+918900754383?text=Hi%20Shadow%20Agents%20%E2%80%94%20I%27d%20like%20a%20free%20sample%20edit." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 16.7L1 23l6.5-1.1A11 11 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.8.6.6-3.7-.2-.3A9 9 0 1 1 12 21zm5-6.7c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.2-.3a.5.5 0 0 0 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.6 11.5 11.5 0 0 0 4.4 3.9 5.2 5.2 0 0 0 3 .8 2.5 2.5 0 0 0 1.7-1.1 2 2 0 0 0 .1-1.1c-.1-.2-.3-.2-.6-.3z"/></svg></a>
-
 
 <div class="mobile-cta" role="region" aria-label="Quick actions">
   <a class="btn btn-lime" href="#sample">Get a free sample</a>
