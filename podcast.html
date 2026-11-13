@@ -269,6 +269,14 @@ body.nav-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .short-card{position:relative;aspect-ratio:9/16;background:#111}
 .short-card img,.short-card iframe{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .short-card .play-btn i{width:64px;height:64px}
+.play-btn{align-items:flex-end;justify-content:flex-start;padding:14px;gap:10px;background:linear-gradient(0deg,rgba(11,11,11,.55),transparent 45%)}
+.play-btn i{width:54px;height:54px;border-width:3px;box-shadow:4px 4px 0 var(--ink)}
+.play-btn svg{width:22px;height:22px;margin-left:3px}
+.play-btn::after{content:"Watch";font:700 12px/1 "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--lime);border:2px solid var(--lime);padding:7px 9px;margin-bottom:9px}
+.short-card .play-btn i{width:46px;height:46px}
+.short-card .play-btn::after{content:none}
+@media (max-width:600px){.play-btn{padding:10px}.play-btn i{width:46px;height:46px}.play-btn::after{font-size:11px;padding:6px 8px;margin-bottom:6px}}
+
 
 .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 blockquote.quote{margin:0;padding:28px 24px;background:var(--paper)}
