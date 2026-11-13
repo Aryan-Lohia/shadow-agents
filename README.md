@@ -31,4 +31,4 @@ python3 -m http.server 8080
 
 ## Deploy
 
-Pushes to `main` trigger [.github/workflows/pages.yml](.github/workflows/pages.yml) (GitHub Actions → GitHub Pages).
+GitHub Pages: **Settings → Pages → Build and deployment → Deploy from a branch**, branch `main`, folder `/ (root)`. Commit and push to `main` to update the live site.
