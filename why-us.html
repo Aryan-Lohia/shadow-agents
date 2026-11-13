@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* Shadow Agents v2 — neobrutalist system */
+/* Shadow Agents v2 — neobrutalist system */
 :root{
   --ink:#0B0B0B;
   --cream:#F6F1E7;
@@ -78,16 +79,39 @@ a:hover{color:var(--blue)}
   border:var(--line-sm);padding:5px 10px;
   box-shadow:var(--shadow-sm);margin:0 0 16px;
 }
+.kicker.lime{background:var(--lime);color:var(--ink)}
 .kicker.blue{background:var(--blue);color:#fff}
-.kicker.red{background:var(--red);color:#fff}
+.kicker.red{background:var(--red);color:var(--ink)}
 .kicker.ink{background:var(--ink);color:var(--lime)}
+/* Keep kicker typography/color when nested in large quote type or colored bands */
+.quote-blow p.kicker,
+.band-ink .kicker.lime,
+.band-blue .kicker.lime,
+.band-red .kicker.lime,
+.page-hero .kicker.lime,
+.photo-band .kicker.lime,
+.cta-band .kicker.lime{
+  font-family:var(--font-mono);font-size:12px;font-weight:700;font-style:normal;
+  letter-spacing:.14em;line-height:1.2;text-transform:uppercase;
+  background:var(--lime);color:var(--ink);
+}
+.quote-blow p.kicker.ink,
+.band-lime .kicker.ink,
+.cta-band .kicker.ink{
+  background:var(--ink);color:var(--lime);
+}
+.quote-blow p.kicker.blue{background:var(--blue);color:#fff}
+.quote-blow p.kicker.red{background:var(--red);color:var(--ink)}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;letter-spacing:-.04em;line-height:1.2;margin:0 0 .45em;color:var(--ink);position:relative;z-index:0}
 h1{font-size:clamp(42px,7.2vw,84px);line-height:1.2}
 h2{font-size:clamp(32px,4.6vw,58px);line-height:1.22}
 h3{font-size:clamp(20px,2vw,26px);letter-spacing:-.03em;line-height:1.25}
 .lede{font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:var(--muted);max-width:40rem;margin:0}
 .accent{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
-.mark{
+.mark,
+.quote-blow .mark,
+.quote-blow p .mark,
+.accent.mark{
   background:var(--lime);
   color:var(--ink);
   padding:0 .16em;
@@ -97,7 +121,7 @@ h3{font-size:clamp(20px,2vw,26px);letter-spacing:-.03em;line-height:1.25}
   box-decoration-break:clone;
 }
 .mark-blue{background:var(--blue);color:#fff}
-.mark-red{background:var(--red);color:#fff}
+.mark-red{background:var(--red);color:var(--ink)}
 .center{text-align:center}
 .center .lede,.center .kicker{margin-inline:auto}
 .section-head{max-width:760px;margin-bottom:40px}
@@ -119,7 +143,7 @@ h3{font-size:clamp(20px,2vw,26px);letter-spacing:-.03em;line-height:1.25}
 .btn-lime{background:var(--lime);color:var(--ink) !important}
 .btn-ink{background:var(--ink);color:var(--lime) !important}
 .btn-paper{background:var(--paper);color:var(--ink) !important}
-.btn-red{background:var(--red);color:#fff !important}
+.btn-red{background:var(--red);color:var(--ink) !important}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px}
 
 /* Cards / frames */
@@ -209,7 +233,7 @@ body.nav-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 }
 .sticker.lime{background:var(--lime)}
 .sticker.blue{background:var(--blue);color:#fff}
-.sticker.red{background:var(--red);color:#fff}
+.sticker.red{background:var(--red);color:var(--ink)}
 .sticker.rot{transform:rotate(-2deg)}
 .sticker.rot2{transform:rotate(2.5deg)}
 .video-frame{position:relative;aspect-ratio:16/9;background:#000}
@@ -247,7 +271,7 @@ body.nav-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .trust-item{display:flex;align-items:center;gap:12px;background:var(--ink);border:var(--line-sm);padding:14px;box-shadow:4px 4px 0 #001e4d}
 .trust-item img{width:40px;height:40px;object-fit:contain;border-radius:4px;background:#fff;flex-shrink:0}
 .trust-item strong{display:block;font-size:28px;letter-spacing:-.04em;line-height:1;color:var(--lime)}
-.trust-item span{display:block;font-size:12px;line-height:1.3;margin-top:3px;color:#d7e6ff}
+.trust-item span{display:block;font-size:12px;line-height:1.3;margin-top:3px;color:#fff}
 
 /* Grids */
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -264,7 +288,7 @@ body.nav-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .compare thead th:last-child{background:var(--blue);color:#fff}
 .compare tr:last-child td{border-bottom:0}
 .compare .yes{font-weight:800}
-.compare .no{color:#8a8175}
+.compare .no{color:var(--ink)}
 
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .step{padding:22px 18px;background:var(--paper);position:relative}
@@ -411,8 +435,8 @@ blockquote.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:1
 .preview-hero h1,.preview-hero .lede{color:#fff}
 .preview-hero .lede{color:#d9d3c4}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 0}
-.tab-btn{background:var(--paper);border:var(--line);box-shadow:var(--shadow-sm);padding:10px 16px;cursor:pointer;font-weight:800}
-.tab-btn[aria-selected="true"]{background:var(--lime)}
+.tab-btn{background:var(--paper);border:var(--line);box-shadow:var(--shadow-sm);padding:10px 16px;cursor:pointer;font-weight:800;color:var(--ink)}
+.tab-btn[aria-selected="true"]{background:var(--lime);color:var(--ink)}
 .frames{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start;padding:36px 0 72px;width:100%}
 .frames > .device:first-child,.browser,.browser-screen{width:100%;min-width:0}
 .device{margin:0}
@@ -442,6 +466,7 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
 
 .band-blue{background:var(--blue);color:#fff;border-top:var(--line);border-bottom:var(--line)}
 .band-blue h2{color:#fff}
+.band-blue .lede,.band-blue .quote-blow footer,blockquote.quote-blow[style*='#fff'] footer{color:#fff}
 .band-lime{background:var(--lime);border-top:var(--line);border-bottom:var(--line)}
 .band-paper{background:var(--paper);border-top:var(--line);border-bottom:var(--line)}
 
@@ -559,28 +584,37 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
 
 .logo-rail{
   overflow:hidden;border-top:var(--line);border-bottom:var(--line);
-  background:var(--paper);padding:18px 0;
+  background:var(--paper);padding:14px 0;
 }
 .logo-rail.ink{background:var(--ink)}
 .logo-rail.blue{background:var(--blue)}
 .logo-rail.lime{background:var(--lime)}
-.logo-rail-track{display:flex;gap:12px;width:max-content;animation:tick 48s linear infinite;align-items:center}
+.logo-rail-track{display:flex;gap:10px;width:max-content;animation:tick 48s linear infinite;align-items:center;padding-inline:10px}
 .logo-pill{
-  height:68px;min-width:118px;padding:8px 14px;
+  height:92px;min-width:0;width:auto;padding:8px 14px;
   background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
-  display:grid;place-items:center;border-radius:6px;
+  display:grid;place-items:center;border-radius:6px;box-sizing:border-box;
 }
-.logo-pill img{max-height:50px;max-width:132px;width:auto;object-fit:contain}
+.logo-pill img{
+  max-height:72px;max-width:180px;width:auto;height:auto;
+  object-fit:contain;display:block;
+}
 .logo-rail.ink .logo-pill{background:var(--cream)}
 
-.logo-wall{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.logo-wall, .logo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;
+}
 .logo-tile{
   background:#fff;border:var(--line-sm);box-shadow:var(--shadow-sm);
-  padding:10px;min-height:88px;display:grid;place-items:center;border-radius:6px;
+  padding:8px;height:100px;min-height:0;display:grid;place-items:center;border-radius:6px;
+  box-sizing:border-box;
   transition:transform .16s var(--ease), box-shadow .16s var(--ease);
 }
 .logo-tile:hover{transform:translate(-3px,-3px) rotate(-1.5deg);box-shadow:8px 8px 0 var(--ink)}
-.logo-tile img{max-height:52px;max-width:100%;object-fit:contain}
+.logo-tile img{
+  max-height:76px;max-width:80%;width:auto;height:auto;
+  object-fit:contain;display:block;
+}
 .logo-tile.ink{background:var(--ink)}
 
 .photo-band{position:relative;min-height:460px;border-top:var(--line);border-bottom:var(--line);overflow:hidden;display:flex;align-items:flex-end}
@@ -646,6 +680,7 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
 
 .quote-blow{margin:0}
 .quote-blow p{font-size:clamp(28px,4.8vw,64px);line-height:1.16;letter-spacing:-.05em;font-weight:800;margin:0;color:inherit}
+.quote-blow p:not(.kicker){color:inherit}
 .quote-blow.serif p{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.03em}
 .quote-blow footer{margin-top:22px;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 
@@ -687,13 +722,13 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
 .offset-img{transform:rotate(-2.5deg)}
 .offset-img.r{transform:rotate(3deg)}
 
-.band-red{background:var(--red);color:#fff;border-top:var(--line);border-bottom:var(--line)}
-.band-red h2,.band-red h3{color:#fff}
-.band-red .lede{color:#ffe8e4}
-.band-red .pain-run .num-xl{color:var(--lime)}
-.band-red .pain-run article{border-bottom-color:#fff}
-.band-red .pain-run{border-top-color:#fff}
-.band-red .pain-run h3{color:#fff}
+.band-red{background:var(--red);color:var(--ink);border-top:var(--line);border-bottom:var(--line)}
+.band-red h2,.band-red h3{color:var(--ink)}
+.band-red .lede{color:var(--ink)}
+.band-red .pain-run .num-xl{color:var(--ink)}
+.band-red .pain-run article{border-bottom-color:var(--ink)}
+.band-red .pain-run{border-top-color:var(--ink)}
+.band-red .pain-run h3{color:var(--ink)}
 
 .mini-note{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:10px 0 0}
 
@@ -709,7 +744,7 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
   .nav-cta{margin:10px 0 0}
   .vs-grid,.contact-tiles{grid-template-columns:minmax(0,1fr)}
   .stat-blow{grid-template-columns:1fr 1fr}
-  .logo-wall{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .logo-wall,.logo-grid{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
   .portrait-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .who-blow,.tl-row,.tl-row.flip,.split-13,.split-31,.feature-short{grid-template-columns:1fr;direction:ltr}
   .tl-row.flip > *{direction:ltr}
@@ -725,12 +760,18 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
   .who-blow > div{padding:36px 22px}
   .stack{min-height:0;display:grid;gap:14px}
   .stack .layer{position:relative;inset:auto;transform:none !important;width:auto !important;height:auto !important;left:auto !important;top:auto !important;right:auto !important}
+  .offset-img,.offset-img.r{transform:none !important}
+  .phone-mock,.float-deco,.hide-mobile{display:none !important}
 }
 @media (max-width:640px){
-  .stat-blow,.logo-wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-blow,.logo-wall,.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vs-grid,.contact-tiles{grid-template-columns:minmax(0,1fr)}
   .portrait-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pain-run article{gap:12px}
+  .logo-pill{height:80px;padding:6px 10px}
+  .logo-pill img{max-height:64px;max-width:150px}
+  .logo-tile{height:88px;padding:6px}
+  .logo-tile img{max-height:64px;max-width:80%}
 }
 @media (prefers-reduced-motion:reduce){
   .logo-rail-track{animation:none}
@@ -772,6 +813,10 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
     linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,.78) 48%,rgba(11,11,11,.94) 100%),
     linear-gradient(90deg,rgba(11,11,11,.88) 0%,rgba(11,11,11,.62) 38%,rgba(11,11,11,.2) 100%);
 }
+
+
+
+
 </style>
 <script>
 window.saPh=function(img){
@@ -850,7 +895,7 @@ document.addEventListener("DOMContentLoaded",function(){
     </div>
   </section>
 
-  <div class="logo-rail" aria-hidden="true"><div class="logo-rail-track"><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Blue-Minch-New-Logo-01.png" alt="Blue Minch"></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-1.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-10.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-11.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-12.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-13.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-15.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-16.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-18.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-19.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-20.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-21.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-22.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-25.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-26.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-27.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-28.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-29.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-3.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-30.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-32.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-33.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-34.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-36.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-37.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-38.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-39.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-4.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Blue-Minch-New-Logo-01.png" alt="Blue Minch"></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-1.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-10.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-11.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-12.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-13.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-15.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-16.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-18.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-19.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-20.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-21.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-22.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-25.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-26.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-27.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-28.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-29.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-3.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-30.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-32.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-33.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-34.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-36.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-37.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-38.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-39.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-4.jpg" alt=""></div></div></div>
+  <div class="logo-rail" aria-hidden="true"><div class="logo-rail-track"><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Blue-Minch-New-Logo-01.png" alt="Blue Minch"></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-1.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-10.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-11.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-12.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-13.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-15.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-16.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-18.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-19.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-20.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-21.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-22.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Blue-Minch-New-Logo-01.png" alt="Blue Minch"></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-1.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-10.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-11.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-12.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-13.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-14.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-15.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-16.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-17.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-18.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-19.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-20.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-21.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-22.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.jpg" alt=""></div></div></div>
 
   <section class="section band-red" id="problem">
     <div class="wrap">
@@ -903,7 +948,7 @@ document.addEventListener("DOMContentLoaded",function(){
       <div class="pic"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/cordination2.jpg" alt="Daily brand manager touchpoints"></div>
       <div class="body"><h3>Daily brand manager touchpoints</h3><p>You get a dedicated Brand Manager who meets with you twice daily — once for new briefs and once for feedback. Your Brand Manager becomes your remote project manager.</p></div>
     </article><article class="scroll-card card lift reveal">
-      <div class="pic"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/large-team-scaled.jpg" alt="Unlimited bandwidth system"></div>
+      <div class="pic"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/large-team-2-scaled.jpg" alt="Unlimited bandwidth system"></div>
       <div class="body"><h3>Unlimited bandwidth system</h3><p>A Dedicated Team handles your account exclusively. The Variable Team and the Emergency Team absorb workload spikes, so nothing slips.</p></div>
     </article><article class="scroll-card card lift reveal">
       <div class="pic"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/photo-1.jpg" alt="Layered quality check"></div>
@@ -935,28 +980,28 @@ document.addEventListener("DOMContentLoaded",function(){
         <p class="lede">From the first meeting and brand-manager assignment through production, feedback, and revision.</p>
       </div>
       <div class="timeline"><div class="tl-row reveal">
-      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/Artboard-1.jpg" alt="Shadow Agents and Blue Minch team at a meetup"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/WhatsApp-Image-2024-08-17-at-11.18.01.jpg" alt="Shadow Agents and Blue Minch team at a meetup"></div>
       <div class="tl-copy">
         <div class="n">01</div>
         <h3>Meet & assign</h3>
         <p class="lede">Initial meet, then a dedicated Brand Manager is assigned to your account.</p>
       </div>
     </div><div class="tl-row flip reveal">
-      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/photo-1.jpg" alt="Team planning session at a whiteboard"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/IMG_8303-scaled.jpg" alt="Team planning session at a whiteboard"></div>
       <div class="tl-copy">
         <div class="n">02</div>
         <h3>Onboard the brand</h3>
         <p class="lede">Onboarding form, gather brand assets, plan the content, and align with you.</p>
       </div>
     </div><div class="tl-row reveal">
-      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/shyan_about-scaled.jpg" alt="Shayan Saria working at a desk"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/pushing.jpg" alt="Editors producing a project"></div>
       <div class="tl-copy">
         <div class="n">03</div>
         <h3>Production starts</h3>
         <p class="lede">The dedicated team edits. Every file is checked by the Team Lead, HOD, and Brand Manager.</p>
       </div>
     </div><div class="tl-row flip reveal">
-      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/younger-minds.jpg" alt="Workshop and review session"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/WhatsApp-Image-2024-08-19-at-11.17.35.jpg" alt="Workshop and review session"></div>
       <div class="tl-copy">
         <div class="n">04</div>
         <h3>Feedback & done</h3>
@@ -987,7 +1032,7 @@ document.addEventListener("DOMContentLoaded",function(){
       <div class="section-head reveal">
         <p class="kicker lime">Why trust Shadow Agents?</p>
         <h2>The scale behind the <span class="accent mark">system.</span></h2>
-        <p class="lede" style="color:#e8f0ff">Numbers from the Shadow Agents site — and the agency that backs the operation.</p>
+        <p class="lede" style="color:#fff">Numbers from the Shadow Agents site — and the agency that backs the operation.</p>
       </div>
       <div class="stat-blow">
         <article class="lift reveal"><span class="n">150+</span><span>Team members</span></article>
@@ -996,11 +1041,11 @@ document.addEventListener("DOMContentLoaded",function(){
         <article class="lift reveal"><span class="n">9-fig</span><span>Blue Minch as our backing</span></article>
       </div>
       <div class="split" style="margin-top:36px;align-items:center">
-        <div class="frame lift reveal"><img data-ph="PHOTO" data-ratio="16/9" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/large-team-2-scaled.jpg" alt="Large Blue Minch team portrait"></div>
+        <div class="frame lift reveal"><img data-ph="PHOTO" data-ratio="16/9" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/IMG_6953-scaled.jpg" alt="Large Blue Minch team portrait"></div>
         <div class="reveal">
           <div class="logo-tile ink" style="max-width:220px;margin-bottom:16px;min-height:72px"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Blue-MinchWhite-Logo.png" alt="Blue Minch"></div>
           <h3 style="color:#fff">Backed by Blue Minch, a 9-figure agency.</h3>
-          <p class="lede" style="color:#e8f0ff">The same production culture, team, and operating muscle sit behind every Shadow Agents account.</p>
+          <p class="lede" style="color:#fff">The same production culture, team, and operating muscle sit behind every Shadow Agents account.</p>
         </div>
       </div>
     </div>
@@ -1017,7 +1062,14 @@ document.addEventListener("DOMContentLoaded",function(){
     </div>
   </section>
 
-  <div class="logo-rail ink" aria-hidden="true"><div class="logo-rail-track"><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-25.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-26.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-27.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-28.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-29.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-3.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-30.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-32.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-33.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-34.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-36.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-37.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-38.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-39.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-4.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-40.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-41.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-42.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-43.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-44.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-45.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-46.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-47.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-48.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-49.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-5.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-50.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-51.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-52.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-53.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-54.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-55.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-56.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-23.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-24.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-25.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-26.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-27.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-28.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-29.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-3.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-30.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-31.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-32.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-33.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-34.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-35.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-36.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-37.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-38.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-39.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-4.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-40.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-41.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-42.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-43.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-44.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-45.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-46.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-47.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-48.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-49.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-5.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-50.jpg" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-51.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-52.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-53.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-54.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-55.png" alt=""></div><div class="logo-pill"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/blueminch/logos/Client-Logo-56.png" alt=""></div></div></div>
+  <section class="section band-ink" style="padding:28px 0">
+    <div class="hscroll" style="padding-inline:max(20px, calc((100% - var(--container))/2))">
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/IMG_8350-scaled.jpg" alt="Blue Minch studio session"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/IMG_8368-scaled.jpg" alt="Team in the edit bay"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/WhatsApp-Image-2024-08-17-at-15.57.50.jpg" alt="The floor during a shoot day"></div>
+      <div class="frame lift"><img data-ph="PHOTO" data-ratio="4/3" onerror="window.saPh&&saPh(this)" src="assets/blueminch/photos/WhatsApp-Image-2024-08-23-at-13.03.00.jpg" alt="A review huddle"></div>
+    </div>
+  </section>
 
   <section class="cta-band band-ink">
     <div class="wrap reveal">
