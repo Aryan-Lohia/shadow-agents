@@ -504,6 +504,18 @@ blockquote.quote footer,.band-ink blockquote.quote footer{color:var(--ink);opaci
   .trust-grid{grid-template-columns:1fr 1fr}
   h1{font-size:clamp(36px,12vw,52px)}
 }
+
+@media (max-width:1080px){
+  .menu-toggle{display:flex}
+  .nav{
+    display:none;position:absolute;top:var(--nav-h);left:0;right:0;
+    background:var(--cream);flex-direction:column;align-items:stretch;
+    padding:12px 16px 20px;border-bottom:var(--line);gap:4px;
+  }
+  body.nav-open .nav{display:flex}
+  .nav a{padding:12px 8px}
+  .nav-cta{margin:10px 0 0}
+}
 </style>
 <script>
 window.saPh=function(img){
@@ -558,9 +570,11 @@ document.addEventListener("DOMContentLoaded",function(){
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="site-nav">
       <a href="index.html">Home</a>
+      <a href="why-us.html">Why us</a>
+      <a href="samples.html">Samples</a>
+      <a href="stories.html">Stories</a>
       <a href="podcast.html">Podcast</a>
-      <a href="brand-guidelines.html">Brand</a>
-      <a href="previews.html" aria-current="page">Previews</a>
+      <a href="contact.html">Contact</a>
       <a class="btn btn-lime nav-cta" href="https://calendly.com/seo-blueminch/30min?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </div>
@@ -570,15 +584,23 @@ document.addEventListener("DOMContentLoaded",function(){
     <div class="wrap">
       <p class="kicker lime">Redesign showcase · v2</p>
       <h1>Desktop and mobile <span class="accent mark">previews.</span></h1>
-      <p class="lede">The neobrutalist homepage and podcast page, in a 1440px desktop frame and a 390px phone frame. Switch sites with the tabs, or open any file on its own.</p>
+      <p class="lede">The neobrutalist site in a 1440px desktop frame and a 390px phone frame. Switch pages with the tabs, or open any file on its own.</p>
       <div class="tabs" role="tablist" aria-label="Choose a redesigned site">
         <button class="tab-btn" role="tab" id="tab-home" aria-selected="true" aria-controls="panel-home">Homepage</button>
+        <button class="tab-btn" role="tab" id="tab-why" aria-selected="false" aria-controls="panel-why">Why us</button>
+        <button class="tab-btn" role="tab" id="tab-samples" aria-selected="false" aria-controls="panel-samples">Samples</button>
+        <button class="tab-btn" role="tab" id="tab-stories" aria-selected="false" aria-controls="panel-stories">Stories</button>
+        <button class="tab-btn" role="tab" id="tab-contact" aria-selected="false" aria-controls="panel-contact">Contact</button>
         <button class="tab-btn" role="tab" id="tab-pod" aria-selected="false" aria-controls="panel-pod">Podcast</button>
       </div>
       <div class="btn-row" style="margin-top:20px">
         <a class="btn btn-lime" href="index.html">Open homepage</a>
-        <a class="btn btn-paper" href="podcast.html">Open podcast</a>
-        <a class="btn btn-primary" href="brand-guidelines.html">Brand guidelines</a>
+        <a class="btn btn-paper" href="why-us.html">Why us</a>
+        <a class="btn btn-paper" href="samples.html">Samples</a>
+        <a class="btn btn-paper" href="stories.html">Stories</a>
+        <a class="btn btn-paper" href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="podcast.html">Podcast</a>
+        <a class="btn btn-ink" href="brand-guidelines.html">Brand guidelines</a>
       </div>
     </div>
   </section>
@@ -605,6 +627,90 @@ document.addEventListener("DOMContentLoaded",function(){
       </figure>
     </div>
 
+
+    <div id="panel-why" role="tabpanel" aria-labelledby="tab-why" class="frames" hidden>
+      <figure class="device">
+        <div class="browser">
+          <div class="browser-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="url">hireshadowagents.com/why-us</div></div>
+          <div class="browser-screen" data-frame-w="1440">
+            <iframe title="Why us desktop preview" src="why-us.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Desktop · 1440px, scaled to fit</figcaption>
+      </figure>
+      <figure class="device">
+        <div class="phone">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-screen" data-frame-w="390">
+            <iframe title="Why us mobile preview" src="why-us.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Mobile · 390px</figcaption>
+      </figure>
+    </div>
+
+    <div id="panel-samples" role="tabpanel" aria-labelledby="tab-samples" class="frames" hidden>
+      <figure class="device">
+        <div class="browser">
+          <div class="browser-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="url">hireshadowagents.com/samples</div></div>
+          <div class="browser-screen" data-frame-w="1440">
+            <iframe title="Samples desktop preview" src="samples.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Desktop · 1440px, scaled to fit</figcaption>
+      </figure>
+      <figure class="device">
+        <div class="phone">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-screen" data-frame-w="390">
+            <iframe title="Samples mobile preview" src="samples.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Mobile · 390px</figcaption>
+      </figure>
+    </div>
+
+    <div id="panel-stories" role="tabpanel" aria-labelledby="tab-stories" class="frames" hidden>
+      <figure class="device">
+        <div class="browser">
+          <div class="browser-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="url">hireshadowagents.com/stories</div></div>
+          <div class="browser-screen" data-frame-w="1440">
+            <iframe title="Stories desktop preview" src="stories.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Desktop · 1440px, scaled to fit</figcaption>
+      </figure>
+      <figure class="device">
+        <div class="phone">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-screen" data-frame-w="390">
+            <iframe title="Stories mobile preview" src="stories.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Mobile · 390px</figcaption>
+      </figure>
+    </div>
+
+    <div id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" class="frames" hidden>
+      <figure class="device">
+        <div class="browser">
+          <div class="browser-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="url">hireshadowagents.com/contact</div></div>
+          <div class="browser-screen" data-frame-w="1440">
+            <iframe title="Contact desktop preview" src="contact.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Desktop · 1440px, scaled to fit</figcaption>
+      </figure>
+      <figure class="device">
+        <div class="phone">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-screen" data-frame-w="390">
+            <iframe title="Contact mobile preview" src="contact.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <figcaption>Mobile · 390px</figcaption>
+      </figure>
+    </div>
     <div id="panel-pod" role="tabpanel" aria-labelledby="tab-pod" class="frames" hidden>
       <figure class="device">
         <div class="browser">
@@ -634,10 +740,13 @@ document.addEventListener("DOMContentLoaded",function(){
       <a class="logo" href="index.html"><span class="logo-chip"><img data-ph="LOGO" data-ratio="logo" onerror="window.saPh&&saPh(this)" src="assets/logo-agents.png" alt="The Shadow Agents"></span></a>
       <div class="foot-links">
         <a href="index.html">Home</a>
-        <a href="podcast.html">Podcast</a>
+        <a href="why-us.html">Why us</a>
+        <a href="samples.html">Samples</a>
+        <a href="stories.html">Stories</a>
+        <a href="podcast.html">Building the Shadow</a>
+        <a href="contact.html">Contact</a>
         <a href="brand-guidelines.html">Brand</a>
         <a href="previews.html">Previews</a>
-        <a href="index.html#contact">Free sample</a>
       </div>
       <div class="socials">
         <a href="https://www.facebook.com/people/Shadow-Agency/61574427526599/" target="_blank" rel="noopener">Facebook</a>
@@ -687,8 +796,10 @@ document.addEventListener("DOMContentLoaded",function(){
   document.querySelectorAll(".browser-screen iframe, .phone-screen iframe").forEach(f => f.addEventListener("load", run));
   setTimeout(run, 400);
   setTimeout(run, 1200);
-  const tabs = [document.getElementById("tab-home"), document.getElementById("tab-pod")];
-  const panels = [document.getElementById("panel-home"), document.getElementById("panel-pod")];
+  const tabIds = ["tab-home","tab-why","tab-samples","tab-stories","tab-contact","tab-pod"];
+  const panelIds = ["panel-home","panel-why","panel-samples","panel-stories","panel-contact","panel-pod"];
+  const tabs = tabIds.map(id => document.getElementById(id));
+  const panels = panelIds.map(id => document.getElementById(id));
   tabs.forEach((tab,i) => tab.addEventListener("click", () => {
     tabs.forEach((t,j) => {
       t.setAttribute("aria-selected", j===i ? "true" : "false");
