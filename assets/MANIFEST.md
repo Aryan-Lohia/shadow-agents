@@ -1,0 +1,43 @@
+# Local assets (all 39 remote images downloaded successfully)
+
+Referenced relatively as `assets/<filename>`.
+
+- `ep-hason.jpg` — 33533 bytes
+- `ep-hunt.jpg` — 9969 bytes
+- `ep-readman.jpg` — 30604 bytes
+- `hero-founder.png` — 993411 bytes
+- `icon-mic.png` — 38258 bytes
+- `icon-play.png` — 36800 bytes
+- `icon-speaker.png` — 40558 bytes
+- `icon-step-1.png` — 29133 bytes
+- `icon-step-2.png` — 30519 bytes
+- `icon-step-3.png` — 32158 bytes
+- `icon-step-4.png` — 30549 bytes
+- `logo-agency.png` — 16303 bytes
+- `logo-agents.png` — 4306 bytes
+- `podcast-hero.png` — 1450541 bytes
+- `shayan.webp` — 29046 bytes
+- `short-1.jpg` — 124430 bytes
+- `short-2.jpg` — 139681 bytes
+- `short-3.jpg` — 112616 bytes
+- `short-4.jpg` — 132982 bytes
+- `sys-1.svg` — 2065 bytes
+- `sys-2.svg` — 2003 bytes
+- `sys-3.svg` — 2721 bytes
+- `sys-4.svg` — 2306 bytes
+- `sys-5.svg` — 5200 bytes
+- `sys-6.svg` — 2985 bytes
+- `sys-7.svg` — 5261 bytes
+- `sys-8.svg` — 3621 bytes
+- `topic-ai.png` — 10948 bytes
+- `topic-growth.png` — 8502 bytes
+- `topic-leaders.png` — 16412 bytes
+- `topic-models.png` — 14601 bytes
+- `topic-operation.png` — 13513 bytes
+- `topic-trend.png` — 7198 bytes
+- `trust-1.svg` — 420 bytes
+- `trust-2.svg` — 905 bytes
+- `trust-4.svg` — 2679 bytes
+- `trust-5.svg` — 1556 bytes
+- `workflow-horizontal.jpg` — 71355 bytes
+- `workflow-vertical.png` — 128725 bytes
